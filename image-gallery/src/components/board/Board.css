@@ -1,0 +1,150 @@
+
+/* __________________ header-starts ______________________ */
+header {
+    width: 100%;
+    height: 80px;
+    /* background-color: blue; */
+    /* background: transparent; */
+    /* background-image: linear-gradient(rgb(0, 0, 0, 0.25), rgb(0, 0, 0, 0)); */
+    /* position: absolute;
+    top: 0; */
+    color: #fff;
+    z-index: 99;
+    margin-bottom: 20px;
+}
+
+.container {
+    /* background-color: aqua; */
+    /* background: transparent; */
+    max-width: 90%;
+    margin: auto;
+}
+
+.navbar {
+    width: 100%;
+    padding-top: 15px;
+    /* background-color: cadetblue; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.logo{
+    height: 45px;
+    width: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #fff;
+}
+.logo>a>img {
+    /* height: 50px; */
+    width: 50px
+    
+}
+
+.search-bar>input {
+    /* width: 525px; */
+    width: 33vw;
+    height: 36px;
+    /* top: 22px;
+    left: 493px; */
+    background: #E9E9E9;
+    padding: 6px 20px;
+    border-radius: 50px;
+    border: none;
+    color: #000;
+    font-weight: 300;
+    outline: none;
+}
+
+.search-bar {
+    position: relative;
+}
+
+.search-magnifying-glass {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.menu {
+    
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-btn{
+    font-size: 25px;
+    margin-left: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    /* background-color: gray; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.menu-btn > a > i{
+    text-decoration: none;
+    color: #5F5F5F;
+}
+.menu-btn > i{
+    cursor: pointer;
+    color: #5F5F5F;
+}
+
+.menu-btn:hover {
+    background-color: #E9E9E9;
+    color: #fff;
+}
+
+@media(max-width: 768px) {
+    .search-bar>input{
+        width: 50vw;
+    }
+    .menu-btn{
+        margin-left: 0;
+    }
+}
+/* __________________ header-end ______________________ */
+
+
+
+
+
+/* __________________ board-end ______________________ */
+
+.pin_container{
+    margin: 0;
+    padding: 0;
+    width: 90vw;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+    grid-auto-rows: 10px;
+    justify-content: center;
+    /* background-color: aqua; */
+    margin: 0 auto;
+}
+
+
+.card{
+    margin: 15px 10px;
+    padding: 0;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+}
+.card_small{
+    grid-row-end: span 26;
+}
+.card_medium{
+    grid-row-end: span 33;
+}
+.card_large{
+    grid-row-end: span 45;
+}

@@ -1,0 +1,93 @@
+/* .card {
+    width: 252px;
+    height: 512px;
+    border-radius: 16px;
+    background-color: green;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+} */
+
+.pin_title {
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+.model_footer {
+    width: 100%;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    transition-duration: 0.3s;
+    position: absolute;
+    z-index: 99;
+    bottom: -55px;
+    left: 0;
+    /* bottom: 0; */
+    border-radius: 16px;
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.card:hover .model_footer{
+    bottom: 0;
+    transition: bottom 0.3s;
+    padding: 0px 15px;
+}
+
+.card:hover .model_footer h3 {
+    color: #feffff;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.model_footer .search {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    color: #fff;
+    background: #fb3874;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+  
+.model_footer .search > a{
+    color: #fff;
+    font-size: 20px;
+}
+
+.pin_image{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    z-index: 0;
+}
+/* .pin_image img{
+    max-height: 100%;
+} */
+.dragNdrop{
+    width: 100%;
+    height: 50vh;
+    background-color: blueviolet;
+
+}
+
+.pin_image img{
+    opacity: 0;    
+}
+
+.pin_max_width{
+    max-width: 100%;
+}
+.pin_max_height{
+    max-height: 100%;
+}
