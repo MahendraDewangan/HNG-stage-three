@@ -10,9 +10,9 @@ function App() {
     <div className="App">
         {/* <Header /> */}
         {/* <Pins /> */}
-        <Modal />
+        {/* <Modal /> */}
         {/* <ModalAndPin /> */}
-        {/* <Board /> */}
+        <Board />
         
     </div>
   );

@@ -1,4 +1,4 @@
-.add_pin_modal{
+.add_pin_modal {
     width: 100%;
     height: 100%;
 
@@ -10,7 +10,7 @@
     z-index: 999;
 }
 
-.add_pin_container{
+.add_pin_container {
     width: 880px;
     height: 674px;
     position: absolute;
@@ -26,26 +26,27 @@
     display: flex;
 }
 
-.side{
+.side {
     width: 50%;
     height: 100%;
     padding: 20px;
 }
 
-#left_side{
+#left_side {
     /* background-color: aqua; */
 }
 
-#right_side{
+#right_side {
     /* background-color: blue; */
 }
 
-.section1{
+.section1 {
     width: 100%;
     height: 8%;
     /* background-color: orange; */
 }
-.section2{
+
+.section2 {
     width: 100%;
     height: 80%;
     display: flex;
@@ -55,7 +56,8 @@
     padding: 0 10px;
     /* background-color: greenyellow; */
 }
-.section3{
+
+.section3 {
     width: 100%;
     height: 12%;
     /* background-color: brown; */
@@ -65,7 +67,7 @@
     align-items: center;
 }
 
-.icon_container{
+.icon_container {
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -78,53 +80,57 @@
     cursor: pointer;
 }
 
-#left_side .icon_container{
+#left_side .icon_container {
     width: 40px;
     height: 40px;
     background-color: rgba(239, 239, 239, 0);
     font-size: 25px;
     transition-duration: 0.3s;
 }
-#left_side .icon_container:hover{
+
+#left_side .icon_container:hover {
     background-color: rgba(239, 239, 239, 1);
 }
 
-#left_side .section2 #upload_img_label{
+#left_side .section2 #upload_img_label {
     width: 100%;
     height: 100%;
     cursor: pointer;
 }
-#left_side .section2 #upload_img_label input{
+
+#left_side .section2 #upload_img_label input {
     width: 0;
     height: 0;
     opacity: 0;
 }
 
-#left_side .section2 #upload_img_label .upload_img_container{
+#left_side .section2 #upload_img_label .upload_img_container {
     width: 100%;
     height: 100%;
     background-color: #EFEFEF;
     border-radius: 8px;
     padding: 10px;
 }
-#left_side .section2 #upload_img_label .upload_img_container #dotted_border{
+
+#left_side .section2 #upload_img_label .upload_img_container #dotted_border {
     width: 100%;
     height: 100%;
     border-radius: 8px;
     border: 2px dashed #DADADA;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
-#left_side .section2 #upload_img_label .upload_img_container #dotted_border .icon_container{
+
+#left_side .section2 #upload_img_label .upload_img_container #dotted_border .icon_container {
     color: #767676;
     font-size: 30px;
 }
 
-.models_pin{
+.models_pin {
     width: 252px;
     height: 512px;
     border-radius: 16px;
@@ -133,7 +139,7 @@
     display: none;
 }
 
-.pin_image{
+.pin_image {
     width: 100%;
     height: 100%;
     display: flex;
@@ -141,18 +147,20 @@
     align-items: center;
 
 }
+
 /* .pin_image img{
     opacity: 0;    
-}
-
-.pin_max_width{
-    max-width: 100%;
-}
-.pin_max_height{
-    max-height: 100%;
 } */
 
-#left_side .section3 .save_from_site{
+.pin_max_width {
+    max-width: 100%;
+}
+
+.pin_max_height {
+    max-height: 100%;
+}
+
+#left_side .section3 .save_from_site {
     width: 340px;
     height: 48px;
     border-radius: 22px;
@@ -165,16 +173,18 @@
 
 }
 
-#right_side .section1{
+#right_side .section1 {
     display: flex;
     justify-content: flex-end;
 }
-#right_side .section1 .select_size{
+
+#right_side .section1 .select_size {
     display: flex;
-    width: 236px;    
+    width: 236px;
     height: 40px;
 }
-#right_side .section1 .select_size select{
+
+#right_side .section1 .select_size select {
     width: 70%;
     height: 100%;
     border: none;
@@ -182,9 +192,10 @@
     border-bottom-left-radius: 8px;
     background-color: #EFEFEF;
     outline: none;
-    font-size: 16px;
+    font-size: 12px;
 }
-#right_side .section1 .select_size .save_pin{
+
+#right_side .section1 .select_size .save_pin {
     width: 30%;
     height: 100%;
     border-top-right-radius: 8px;
@@ -199,7 +210,7 @@
     cursor: pointer;
 }
 
-#right_side .section2 .new_pin_input{
+#right_side .section2 .new_pin_input {
     margin-bottom: 20px;
     width: 100%;
     height: 50px;
@@ -208,4 +219,105 @@
     background: transparent;
     font-size: 16px;
     outline: none;
+}
+
+#right_side .save_pin_bottom{
+    width: 0;
+    height: 0;
+    border-radius: 10px;
+    /* border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px; */
+    background-color: #E60023;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    
+    
+}
+
+@media(max-width: 900px) {
+    .add_pin_modal{
+        /* min-height: 100vh; */
+        height: 100vh;
+        width: 100vw;
+    }
+    .add_pin_container {
+        max-width: 525px;
+        width: 90vw;
+        height: 90vh;
+        /* display: block; */
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .side {
+        width: 100%;
+        height: 50%;
+    }
+
+    
+    .section1 {
+        width: 100%;
+        /* background-color: green; */
+    }
+    
+    #left_side .section1 {
+        /* background-color: brown; */
+        margin-bottom: 20px;
+    }
+    #left_side .section2{
+        height: 70%;
+    }
+
+    #left_side .section2 {
+        /* background-color: brown; */
+
+        margin-bottom: 20px;
+    }
+
+    #left_side .icon_container {
+        background-color: rgba(239, 239, 239, 1);
+    }
+
+
+
+    #right_side .section1 .select_size {
+        width: 100%;
+        margin-bottom: 20px;
+        /* display: block; */
+    }
+
+    #right_side .section1 .select_size select {
+        padding-left: 10px;
+        width: 100%;
+        padding-left: 0 20px;
+        border-radius: 8px;
+        font-size: 12px;
+        /* display: block; */
+    }
+    #right_side .section1 .select_size > select > option {
+        font-size: 12px;
+        width: 100px;
+
+    }
+
+    #right_side .section1 .select_size .save_pin {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        visibility:hidden;
+    }
+    
+    #right_side .section2{
+        margin-top: 30px;
+    }
+    
+    #right_side .save_pin_bottom{
+        width: 100%;
+        height: 40px;
+    }
 }

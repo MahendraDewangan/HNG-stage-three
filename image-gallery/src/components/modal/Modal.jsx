@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import './Modal.css'
+import DnD from '../Drag n Drop/DnD';
 
-function upload_img(event, pinDetails, setPinDetails, setShowLable, setShowModalPin){
-    if(event.target.files && event.target.files[0]){
-        if(/image\/*/.test(event.target.files[0].type)){
+function upload_img(event, pinDetails, setPinDetails, setShowLable, setShowModalPin) {
+    if (event.target.files && event.target.files[0]) {
+        if (/image\/*/.test(event.target.files[0].type)) {
             const reader = new FileReader();
 
-            reader.onload = function(){
+            reader.onload = function () {
                 setPinDetails({
                     ...pinDetails,
                     img_blob: reader.result
@@ -20,29 +21,30 @@ function upload_img(event, pinDetails, setPinDetails, setShowLable, setShowModal
     }
 }
 
-function check_size(event){
+function check_size(event) {
     const image = event.target;
 
     image.classList.add('pin_max_width');
-    
-    if(
+
+    if (
         image.getBoundingClientRect().width < image.parentElement.getBoundingClientRect().width ||
         image.getBoundingClientRect().height < image.parentElement.getBoundingClientRect().height
-    ){
+    ) {
 
         image.classList.remove('pin_max_width');
         image.classList.add('pin_max_height');
     }
-    
+
     image.style.opacity = 1;
 
 }
 
-function save_pin(pinDetails, add_pin){
+function save_pin(pinDetails, add_pin, preview) {
     const users_data = {
         ...pinDetails,
         author: 'Jack',
         board: 'default',
+        img_blob: preview,
         title: document.querySelector('#pin_title').value,
         description: document.querySelector('#pin_description').value,
         destination: document.querySelector('#pin_destination').value,
@@ -68,10 +70,34 @@ export const Modal = (props) => {
     const [showModalPin, setShowModalPin] = useState(false);
 
     // using react dropzone -- start
-    
+    const [uploadedImages, setUploadedImages] = useState([]);
+    const [currentImage, setCurrentImage] = useState([]);
+
+    const handleUpload = (acceptedFiles) => {
+        const updatedImages = acceptedFiles.map(file => ({
+            name: file.name,
+            preview: URL.createObjectURL(file),
+            file: file
+            // Add any additional properties you want to store
+        }));
+        setUploadedImages(prevImages => [...prevImages, ...updatedImages]);
+        console.log(updatedImages);
+        setCurrentImage({
+            name: acceptedFiles[0].name,
+            preview: URL.createObjectURL(acceptedFiles[0]),
+            file: acceptedFiles[0]
+            // Add any additional properties you want to store
+        });
+        console.log(currentImage.name);
+        setShowLable(false);
+        setShowModalPin(true);
+        
+
+    };
 
 
     // using react dropzone -- end
+
 
 
     return (
@@ -90,27 +116,36 @@ export const Modal = (props) => {
                             >
                                 <div className="upload_img_container">
                                     <div id="dotted_border">
-                                        <div className="icon_container">
+                                        <DnD onUpload={handleUpload} />
+                                        
+                                        {/* <div className="icon_container">
                                             <i class="fa fa-upload"></i>
                                         </div>
                                         <div>Click to upload</div>
-                                        <div>Recommendation: use high quality .jpg less than 20mb</div>
+                                        <div>Recommendation: use high quality .jpg less than 20mb</div> */}
                                     </div>
                                 </div>
-                                <input onChange={event => upload_img(event, pinDetails, setPinDetails, setShowLable, setShowModalPin)} type="file" name="upload_img" id="upload_img" value=''/>
+                                {/* <input onChange={event => upload_img(event, pinDetails, setPinDetails, setShowLable, setShowModalPin)} type="file" name="upload_img" id="upload_img" value='' /> */}
                             </label>
                             <div className="models_pin"
                                 style={{
                                     display: showModalPin ? 'block' : 'none'
                                 }}
                             >
-                                <div className="pin_image">
+                                {/* <div className="pin_image">
                                     <img onLoad={check_size} src={pinDetails.img_blob} alt="pin_image" />
-                                </div >
+                                </div > */}
+                                {currentImage && (
+                                    <div className='pin_image'>
+                                        <img onLoad={check_size} src={currentImage.preview} alt={currentImage.name}/>
+                                        {/* <p>{currentImage.name}</p> */}
+                                        {/* You can access other properties like currentImage.file */}
+                                    </div>
+                                )}
                             </div>
                         </div >
                         <div className="section3">
-                            <div className="save_from_site">Save</div>
+                            <div className="save_from_site">{currentImage.name}</div>
                         </div>
                     </div >
                     <div className="side" id="right_side">
@@ -122,14 +157,16 @@ export const Modal = (props) => {
                                     <option value="medium">Medium</option>
                                     <option value="large">Large</option>
                                 </select>
-                                <div  onClick={() => save_pin(pinDetails, props.add_pin)} className="save_pin">Save</div>
+                                <div onClick={() => save_pin(pinDetails, props.add_pin, currentImage.preview)} className="save_pin">Save</div>
                             </div>
                         </div>
                         <div className="section2">
                             <input placeholder='Add your title' type="text" className="new_pin_input" id="pin_title" />
                             <input placeholder='Tell everyone what your pin is about' type="text" className="new_pin_input" id="pin_description" />
                             <input placeholder='Add a destination link' type="text" className="new_pin_input" id="pin_destination" />
+                            <div onClick={() => save_pin(pinDetails, props.add_pin, currentImage.preview)} className="save_pin_bottom">Save</div>
                         </div >
+
                     </div >
                 </div >
             </div >
