@@ -1,0 +1,25 @@
+
+.search-input>form>input {
+    /* width: 525px; */
+    width: 33vw;
+    height: 36px;
+    /* top: 22px;
+    left: 493px; */
+    background: #E9E9E9;
+    padding: 6px 20px;
+    border-radius: 50px;
+    border: none;
+    color: #000;
+    font-weight: 300;
+    outline: none;
+}
+
+
+
+@media(max-width: 768px) {
+    .search-bar >.search-input>form>input {
+        width: 50vw;
+    }
+
+    
+}

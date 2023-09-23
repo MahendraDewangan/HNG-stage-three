@@ -21,7 +21,7 @@ export const Header = () => {
 
                         </div>
                         <div className="search-bar">
-                            <form onSubmit={this.onFormSubmit} className='ui form'>
+                            {/* <form onSubmit={this.onFormSubmit} className='ui form'>
                                 <div className='field'>
                                     <label>Search</label>
                                     <input
@@ -30,7 +30,7 @@ export const Header = () => {
                                         onChange={(event) => this.setState({ text: event.target.value })}
                                     />
                                 </div>
-                            </form>
+                            </form> */}
                             <input type="text" placeholder='Search' />
                             <i className="fa fa-search search-magnifying-glass" ></i>
 

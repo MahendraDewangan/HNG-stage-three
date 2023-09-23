@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { signOut } from "firebase/auth";
-import { database } from '../firebaseConfig';
+import { database } from '../../firebaseConfig';
 import { useNavigate } from "react-router-dom";
-import Search from "./Search";
+import Search from "../Search/Search";
 import axios from "axios";
-import './style.css'
+import './Home.css';
+// import './style.css';
 // https://api.unsplash.com/photos?client_id=F70Avb-VkF7RE5zq-tL3UlolH-TYthKyfpdbuT-iiKU
 const Home = () => {
   const API_URL_1 = "https://api.unsplash.com/search/photos";
@@ -36,7 +37,7 @@ const Home = () => {
 
   async function getPhotos() {
     try {
-    setLoading(true)
+      setLoading(true)
       const { data } = await axios.get(
         `${API_URL}?client_id=F70Avb-VkF7RE5zq-tL3UlolH-TYthKyfpdbuT-iiKU`
       );
@@ -184,42 +185,76 @@ const Home = () => {
   ));
 
   return (
-    <div className="w-full h-max p-8 | flex flex-col justify-center items-center gap-8 container">
-      <button
-        onClick={handleSignOut}
-        className="text-rose-600 font-semibold rounded-md py-2  | absolute top-5 right-8"
-      >
-        Log Out
-      </button>
-      <h1 className="text-black text-2xl header">
-        Image gallery
-      </h1>
-      <Search
-        
-        photosList={photosList}
-        handleSearch={handleSearch}
-        searchInput={searchInput}
-      />
-{ 
-  loading ?
-  <div>
-    {defaultPhotos <= 0 ? (
-      <h2 className="w-full text-center text-3xl m-auto h-calc p-20">
-        Loading...
-      </h2>
-    ) : (
-      ""
-    )}
-  </div>
-  :
-  <div className="w-full grid sm:grid-cols-4 grid-cols-2 content-center gap-4 ">
-    {photosList.length > 0 ? photosListElement : defaultPhotosElement}
-  </div>
-}
-      
+    <>
+      <header>
+        <div className="container flexSB">
+          <nav className='flexSB navbar'>
+            <div className="logo">
+              <a href="/home"><img src="./images/logo-rm.png" alt="" className="header_logo" /></a>
+            </div>
+            <div className="search-bar">
+              <Search
 
-      
-    </div>
+                photosList={photosList}
+                handleSearch={handleSearch}
+                searchInput={searchInput}
+              />
+              {/* <input type="text" placeholder='Search' />
+              <i className="fa fa-search search-magnifying-glass" ></i> */}
+            </div>
+            <div className='flexSB menu'>
+              <div className="menu-btn">
+                <div className="logInOut">
+
+                  <div className="loggedOut">
+                    <div class="dropdown">
+                      <button class="dropbtn"><i className="fa fa-user"></i></button>
+                      <div class="dropdown-content">
+
+                        <button onClick={handleSignOut} >
+                          Log Out
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </nav>
+        </div>
+      </header>
+      <div className="w-full h-max p-8 | flex flex-col justify-center items-center gap-8">
+
+        {/* <Search
+
+          photosList={photosList}
+          handleSearch={handleSearch}
+          searchInput={searchInput}
+        /> */}
+        {
+          loading ?
+            <div>
+              {defaultPhotos <= 0 ? (
+                <h2 className="w-full text-center text-3xl m-auto h-calc p-20">
+                  Loading...
+                </h2>
+              ) : (
+                ""
+              )}
+            </div>
+            :
+            <div className="w-full grid sm:grid-cols-4 grid-cols-2 content-center gap-4 ">
+              {photosList.length > 0 ? photosListElement : defaultPhotosElement}
+            </div>
+        }
+
+
+
+      </div>
+
+    </>
   );
 };
 
